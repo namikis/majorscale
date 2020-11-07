@@ -11,6 +11,16 @@
         <div class="header_logo">
             <h1>Major Scale</h1>
         </div>
+        <div class="header_right">
+            @if(isset($loginInfo))
+                <div class="header_user">
+                    {{ $loginInfo['user_name'] }}
+                </div>
+                <div class="header_logout">
+                    <a href="/logout">ログアウト</a>
+                </div>
+            @endif
+        </div>
     </div>
 
     <div class="whole_wrapper">

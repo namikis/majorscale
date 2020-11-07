@@ -18,3 +18,13 @@ Route::get('/', function () {
 });
 
 Route::get('/login', 'authController@login_form');
+Route::post('/login', 'authController@login');
+
+Route::get('/signup/pre', 'authController@pre_signup');
+Route::post('/signup/mail', 'authController@send_mail');
+
+Route::get('/signup/register', 'authController@register');
+Route::post('/signup/register', 'authController@register_done');
+
+Route::get('/logout', 'authController@logout');
+Route::get('/path', 'mainController@path');
