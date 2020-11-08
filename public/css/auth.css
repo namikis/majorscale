@@ -1,3 +1,25 @@
 .auth_wrapper{
     padding:30px;
 }
+
+.inp_item{
+    margin:10px 0;
+}
+
+.inp_item p{
+    font-size:18px;
+}
+
+.inp_item input{
+    width:300px;
+}
+
+.auth_path{
+    display:flex;
+    justify-content: start;
+    margin-top:20px;
+}
+
+.to_button{
+    margin:0 20px;
+}

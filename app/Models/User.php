@@ -12,6 +12,17 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public static function checkEmail($email){
+        //DBにすでに登録してあればtrue
+        $user = DB::table('users')
+                    ->where('email', $email)
+                    ->first();
+        if($user){
+            return true;
+        }
+        return false;
+    }
+
     public static function getByEmail($email){
         return DB::table('users')
                 ->where('email', $email)

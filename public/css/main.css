@@ -16,10 +16,22 @@ body{
     background:#A01C38;
     margin-bottom:100px;
     padding:8px 10px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header_logo{
     color:#E8D93A;
+}
+
+.header_right{
+    display: flex;
+}
+
+.header_right_item, .header_right_item a{
+    color:#E8D93A;
+    margin:0 10px;
 }
 
 .whole_title{
@@ -37,3 +49,23 @@ body{
     background:#FCFCFC;
 }
 
+.button{
+    padding:3px 10px;
+    color:#E8D93A;
+    background:#A01C38;
+    border-radius:15px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.button:hover{
+    opacity:0.9;
+}
+
+.button a{
+    color:#E8D93A;
+}
+
+.error_msg{
+    color:red;
+}

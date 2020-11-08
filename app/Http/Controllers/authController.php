@@ -19,6 +19,10 @@ class authController extends Controller
     }
 
     public function login(Request $request){
+        $this->validate($request,[
+            "email" => 'required',
+            "pass" => 'required'
+        ]);
         $pass = $request->pass;
         $email = $request->email;
         if(Auth::attempt(['email' => $email, 'password' => $pass])){
@@ -47,6 +51,12 @@ class authController extends Controller
 
     public function send_mail(Request $request){
         $email = $request->email;
+        if(User::checkEmail($email)){
+            return view('pre_signup_form')
+                    ->with('message', "このメールアドレスはすでに使われています。");
+        }
+        
+        
         $token = UserLogic::getToken();
         User::insertPre($email, $token);
         $data['token'] = $token;
@@ -68,6 +78,11 @@ class authController extends Controller
     }
 
     public function register_done(Request $request){
+
+        $this->validate($request, [
+            "name" => 'required',
+            "pass" => 'same:confirm_pass|required'
+        ]);
         $token = $request->token;
         $name = $request->name;
         $email = $request->email;

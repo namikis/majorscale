@@ -13,10 +13,10 @@
         </div>
         <div class="header_right">
             @if(isset($loginInfo))
-                <div class="header_user">
+                <div class="header_right_item">
                     {{ $loginInfo['user_name'] }}
                 </div>
-                <div class="header_logout">
+                <div class="header_right_item">
                     <a href="/logout">ログアウト</a>
                 </div>
             @endif
@@ -32,4 +32,6 @@
         @yield('content')
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </html>

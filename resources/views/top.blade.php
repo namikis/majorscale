@@ -58,7 +58,11 @@
 
     .top_link{
         position:relative;
-        
+        transition-duration:0.5s;
+    }
+    .top_link:hover{
+        transform:scale(1.3);
+        transition-duration:0.5s;
     }
 
     .top_link a{
@@ -81,3 +85,6 @@
         font-weight:bold;
     }
 </style>
+
+<script src="{{asset('js/jquery.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/top.js')}}" type="text/javascript"></script>
