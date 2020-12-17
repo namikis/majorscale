@@ -28,3 +28,6 @@ Route::post('/signup/register', 'authController@register_done');
 
 Route::get('/logout', 'authController@logout');
 Route::get('/path', 'mainController@path');
+
+Route::get('/local', 'LocalController@top');
+Route::get('/local/post', 'LocalController@post_form');
