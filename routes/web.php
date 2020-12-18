@@ -31,3 +31,6 @@ Route::get('/path', 'mainController@path');
 
 Route::get('/local', 'LocalController@top');
 Route::get('/local/post', 'LocalController@post_form');
+Route::post('/local/post', 'LocalController@post');
+
+Route::get('/local/detail/{id}', 'LocalController@detail');
