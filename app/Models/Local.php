@@ -42,4 +42,17 @@ class Local extends Model
                     ->where('user_id', $user_id)
                     ->get();
     }
+
+    public static function getPostAndQues($post_id){
+        return DB::table('local_posts')
+                    ->join('local_queses','local_posts.id','=','local_queses.post_id')
+                    ->where('local_posts.id',$post_id)
+                    ->get();
+    }
+
+    public static function getItems($q_id){
+        return DB::table('local_items')
+                ->where('q_id',$q_id)
+                ->get();
+    }
 }

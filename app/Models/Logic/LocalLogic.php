@@ -36,4 +36,18 @@ class LocalLogic extends Model
             $k += $item_count;
         }
     }
+
+    public static function PostList($post_id){
+        $post_ques = Local::getPostAndQues($post_id);
+        $posts = [];
+        foreach($post_ques as $ques){
+            $post["q_title"] = $ques->q_title;
+            $post["q_type"] = $ques->q_type;
+            $post["items"] = Local::getItems($ques->id);
+            $post["post_title"] = $ques->title;
+            $post["post_id"] = $ques->post_id;
+            $posts[] = $post;
+        }
+        return $posts;
+    }
 }

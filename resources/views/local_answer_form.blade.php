@@ -1,6 +1,8 @@
 @extends('layouts/header')
 @section('content')
     <div class="container">
+    <form action="/local/answer" method="post">
+            {{ csrf_field() }}
         <div class="post_detail_wrapper">
             <div class="post_detail_title">
                 {{ $posts[0]["post_title"] }}
@@ -9,24 +11,29 @@
                 @foreach($posts as $post)
                     <div class="detail_ques">
                         <p>〇{{ $post["q_title"] }}</p>
+                            @if($post["q_type"] == 0)
                             <div class="detail_items">
                                 @foreach($post["items"] as $item)
                                     <div class="detail_item">
-                                        ・{{ $item->item }}
+                                        <input type="radio" value={{$item->id}} name={{$post["q_title"]}}>{{ $item->item }}
                                     </div>
                                 @endforeach
                             </div>
+                            @else
+                                <div class="detail_items">
+                                    <input type="text" name={{$post["q_title"]}}>
+                                </div>
+                            @endif
                     </div>
+                    <input type="hidden" name="q_titles[]" value={{$post["q_title"]}}>
                 @endforeach
             </div>
         </div>
         <div class="to_ans">
-        <form action="/local/answer" method="get">
-            {{ csrf_field() }}
             <input type="hidden" value={{$posts[0]["post_id"]}} name="post_id">
-            <input type="submit" value="回答する" class="button">
-            </form>
+            <input type="submit" value="送信する" class="button">
         </div>
+    </form>
     </div>
 @endsection
 

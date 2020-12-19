@@ -34,3 +34,4 @@ Route::get('/local/post', 'LocalController@post_form');
 Route::post('/local/post', 'LocalController@post');
 
 Route::get('/local/detail/{id}', 'LocalController@detail');
+Route::get('/local/answer','LocalController@answer_form');

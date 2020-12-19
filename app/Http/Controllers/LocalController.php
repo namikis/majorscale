@@ -31,7 +31,25 @@ class LocalController extends Controller
     }
     public function detail(Request $request){
         $post_id = $request->id;
+        $posts = LocalLogic::PostList($post_id);
         return view('local_detail')
-                ->with('post_id', $post_id);
+                ->with('posts', $posts)
+                ->with('title',"詳細");
+    }
+
+    public function answer_form(Request $request){
+        $post_id = $request->post_id;
+        $posts = LocalLogic::PostList($post_id);
+        return view('local_answer_form')
+                ->with('posts', $posts)
+                ->with('title',"回答");
+    }
+
+    public function answer(Request $request){
+        $q_titles = $request->q_titles;
+        foreach($q_titles as $q_title){
+            //item_id list
+            $ans[$q_title] = $request->$q_title;
+        }
     }
 }
