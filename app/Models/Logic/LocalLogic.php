@@ -50,4 +50,31 @@ class LocalLogic extends Model
         }
         return $posts;
     }
+
+    public static function InsertFeedLogic($request){
+        $q_titles = $request->q_titles;
+        $q_types = $request->q_types;
+
+        $count = 0;
+        $data = [];
+        foreach($q_titles as $q_title){
+            $q_type = $q_types[$count];
+            $count++;
+            if($q_type == 0){
+                $text = "null";
+            }else{
+                $text = $request->$q_title . "_text";
+            }
+
+            $feed = [];
+            $feed = [
+                "item_id" => $request->$q_title,
+                "post_id" => $request->post_id,
+                "feed_name" => $request->feed_name,
+                "text" => $text
+            ];
+            $data[] =  $feed;
+        }
+        Local::InsertFeed($data);
+    }
 }

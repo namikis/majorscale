@@ -55,4 +55,9 @@ class Local extends Model
                 ->where('q_id',$q_id)
                 ->get();
     }
+
+    public static function InsertFeed($data){
+        DB::table('local_feedbacks')
+            ->insert($data);
+    }
 }

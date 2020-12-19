@@ -46,10 +46,7 @@ class LocalController extends Controller
     }
 
     public function answer(Request $request){
-        $q_titles = $request->q_titles;
-        foreach($q_titles as $q_title){
-            //item_id list
-            $ans[$q_title] = $request->$q_title;
-        }
+        LocalLogic::InsertFeedLogic($request);
+        return view('answer_done');
     }
 }
